@@ -5,11 +5,11 @@ namespace movies_api.Models;
 public class Movie 
 {
     [Required]
-    [MaxLength(90, ErrorMessage = "Movie name length exceeded")]
+    [StringLength(90, ErrorMessage = "Movie name length exceeded")]
     public string Title { get; set; } = null!;
     
     [Required]
-    [MaxLength(20, ErrorMessage = "Movie genre length exceeded")]
+    [StringLength(20, ErrorMessage = "Movie genre length exceeded")]
     public string Genre { get; set; } = null!;
     
     [Required]
