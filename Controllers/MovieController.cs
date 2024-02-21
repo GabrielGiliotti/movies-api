@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using movies_api.DTOs;
 using movies_api.Services;
@@ -22,7 +23,7 @@ public class MovieController : ControllerBase
     {
         await _movieService.AddMovieAsync(obj);
 
-        return CreatedAtAction(nameof(GetMovieById), new { id = obj.Id }, obj);
+        return Created("/movie", obj);
     }
 
     [HttpGet]
@@ -39,5 +40,13 @@ public class MovieController : ControllerBase
         var movie = await _movieService.GetMovieByIdAsync(id);
         
         return Ok(movie);
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateMovie(int id, [FromBody] MovieDto obj) 
+    {
+        await _movieService.UpdateMovieAsync(obj, id);
+
+        return NoContent();
     }
 }

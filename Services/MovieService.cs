@@ -49,4 +49,31 @@ public class MovieService : IMovieService
         else 
             throw new Exception("Error while mapping UserDto");
     }
+
+    public async Task UpdateMovieAsync(MovieDto obj, int id)
+    {
+        var toUpdate = await _repository.GetByIdAsync(id) ?? throw new Exception("Movie not found");
+        
+        if (!string.IsNullOrEmpty(obj.Title) && toUpdate.Title != obj.Title) 
+        {
+            toUpdate.Title = obj.Title;
+        }
+
+        if(!string.IsNullOrEmpty(obj.Genre) && toUpdate.Genre != obj.Genre) 
+        {
+            toUpdate.Genre = obj.Genre;
+        }
+
+        if(!string.IsNullOrEmpty(obj.Director) && toUpdate.Director != obj.Director) 
+        {
+            toUpdate.Director = obj.Director;
+        }
+
+        if(obj.Duration != null && toUpdate.Duration != obj.Duration) 
+        {
+            toUpdate.Duration = (int)obj.Duration;
+        }
+
+        await _repository.UpdateAsync(toUpdate, id);
+    }
 }

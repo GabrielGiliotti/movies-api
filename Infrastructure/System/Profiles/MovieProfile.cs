@@ -10,6 +10,6 @@ public class MovieProfile : Profile
     {
         CreateMap<MovieDto, Movie>();
         CreateMap<Movie, MovieDto>();
-        CreateMap<IEnumerable<Movie>, IEnumerable<MovieDto>>();
+        CreateMap<IEnumerable<Movie>, IList<MovieDto>>();
     }
 }
