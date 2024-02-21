@@ -1,6 +1,4 @@
-using movies_api.Infrastructure.Database;
-using movies_api.Models;
-using movies_api.Repositories;
+using movies_api.Infrastructure.System.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<Context>();
-builder.Services.AddScoped<IUnitOfwork, UnitOfwork>();
-
-builder.Services.AddScoped<IRepository<Movie>, Repository<Movie>>();
-builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddRepositoriesExtension();
 
 var app = builder.Build();
 
