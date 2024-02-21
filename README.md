@@ -49,3 +49,21 @@ As the name suggests, the Controller-Service-Repository pattern divides the appl
 ## UnitOfWork (UoW) Pattern
  
 Going further, we will implement the UnitOfWork (UoW) pattern in the repository layer. This is a design pattern used to manage transactions and ensure data consistency in your application when working with a database. It helps in coordinating multiple database operations within a single transaction scope.
+
+## Using MySql database
+
+After configuring the context and repository structure for data access, it is necessary to execute some commands to reflect the structure in the database installed on the machine.
+
+Execute:
+
+``` dotnet ef migrations add <MigrationName> ```
+
+To create the migration for the database. 
+
+And:
+
+``` dotnet ef database update ```
+
+To apply migrations to the database.
+
+(OBS: The commands presented correspond to the .NET CLI, that is, they can be applied via the terminal at the command prompt or in VS Code)
