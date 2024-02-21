@@ -1,10 +1,10 @@
-using movies_api.Models;
+using movies_api.DTOs;
 
 namespace movies_api.Services;
 
 public interface IMovieService
 {
-    Task AddMovieAsync(Movie obj);
-    Task<Movie?> GetMovieByIdAsync(int id);
-    Task<IEnumerable<Movie>> GetAllMoviesAsync(int skip, int take);
+    Task AddMovieAsync(MovieDto obj);
+    Task<MovieDto?> GetMovieByIdAsync(int id);
+    Task<IEnumerable<MovieDto>> GetAllMoviesAsync(int skip, int take);
 }

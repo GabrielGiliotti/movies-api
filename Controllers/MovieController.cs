@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using movies_api.Models;
+using movies_api.DTOs;
 using movies_api.Services;
 
 namespace movies_api.Controllers;
@@ -18,7 +18,7 @@ public class MovieController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddMovie(Movie obj) 
+    public async Task<IActionResult> AddMovie(MovieDto obj) 
     {
         await _movieService.AddMovieAsync(obj);
 
