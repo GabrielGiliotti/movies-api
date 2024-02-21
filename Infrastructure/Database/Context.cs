@@ -8,4 +8,5 @@ public class Context : DbContext
     public Context(DbContextOptions<Context> opts) : base(opts) {}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {}
     protected override void OnModelCreating(ModelBuilder modelBuilder) {}
+    public DbSet<Movie> Movies { get; set; }
 }
