@@ -11,6 +11,10 @@ public class Movie
     [Required]
     [StringLength(90, ErrorMessage = "Movie name length exceeded")]
     public string Title { get; set; } = null!;
+
+    [Required]
+    [StringLength(86, ErrorMessage = "Movie director length exceeded")]
+    public string Director { get; set; } = null!;
     
     [Required]
     [StringLength(20, ErrorMessage = "Movie genre length exceeded")]

@@ -66,4 +66,4 @@ And:
 
 To apply migrations to the database.
 
-(OBS: The commands presented correspond to the .NET CLI, that is, they can be applied via the terminal at the command prompt or in VS Code)
+Note: The commands presented correspond to the .NET CLI, that is, they can be applied via the terminal at the command prompt or in VS Code

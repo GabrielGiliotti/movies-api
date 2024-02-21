@@ -17,9 +17,11 @@ public class MovieRepository : IMovieRepository
         await _repo.Create(obj);
     }
 
-    public async Task<IEnumerable<Movie>> GetAllAsync()
+    public async Task<IEnumerable<Movie>> GetAllAsync(int skip, int take)
     {
-        return await _repo.GetAll();
+        var movies = await _repo.GetAll();
+
+        return movies.Skip(skip).Take(take);
     }
 
     public async Task<Movie?> GetByIdAsync(int id)
