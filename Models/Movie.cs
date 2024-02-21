@@ -5,6 +5,9 @@ namespace movies_api.Models;
 public class Movie 
 {
     [Required]
+    public int Id { get; set; }
+
+    [Required]
     [StringLength(90, ErrorMessage = "Movie name length exceeded")]
     public string Title { get; set; } = null!;
     

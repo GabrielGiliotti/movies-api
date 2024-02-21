@@ -13,5 +13,19 @@ public class MovieController : ControllerBase
         _logger = logger;
     }
 
-    
+    [HttpPost]
+    public async Task<IActionResult> AddMovie() {
+        return Ok();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetMoviesPaged([FromQuery] int skip, [FromQuery] int take) {
+        // Utilizar Skip e Take de lista 
+        return Ok();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetMovieById(string id) {
+        return Ok();
+    }
 }

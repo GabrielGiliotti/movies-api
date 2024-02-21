@@ -28,3 +28,24 @@ An API that implements the REST standard is called a RESTful API, and it must me
 
 * Cache: A REST API must be developed in such a way that it can cache data. When information is stored in cache, requests and responses between client and server are optimized.
 
+## Controller-Service-Repository pattern .NET core
+
+The Controller-Service-Repository pattern implemented in this repository is a bit different from the course we are reviewing, but I decided to implement it because it was a pattern widely used in my previous experiences as a developer, that is, the companies I worked for used this structure due to the benefits, which I will try to mention.
+
+It is worth remembering that this pattern matches very well with DDD (Domain-Driven Design) which is a project architecture pattern focused on the business rules that an application may contain. 
+
+This pattern also goes very well with TDD (Test-Driven Design) as it reduces coupling between project layers, facilitating testing and reuse (DRY - Dont't Repeat Yourself).
+
+(We may go deeper into DDD and TDD patterns in the future)
+
+As the name suggests, the Controller-Service-Repository pattern divides the application into three layers, where each one has its own well-defined responsibility:
+
+* Controller: is responsible for exposing the functionality so that it can be consumed by external entities (including, perhaps, a UI component).
+
+* Service: is where all the business logic should go. 
+
+* Repository: is responsible for storing and retrieving some set of data.
+
+## UnitOfWork (UoW) Pattern
+ 
+Going further, we will implement the UnitOfWork (UoW) pattern in the repository layer. This is a design pattern used to manage transactions and ensure data consistency in your application when working with a database. It helps in coordinating multiple database operations within a single transaction scope.
