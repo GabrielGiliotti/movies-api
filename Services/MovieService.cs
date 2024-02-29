@@ -76,4 +76,14 @@ public class MovieService : IMovieService
 
         await _repository.UpdateAsync(toUpdate, id);
     }
+
+    public async Task DeleteMovieAsync(int id) 
+    {
+        var movie = await _repository.GetByIdAsync(id);
+
+        if(movie == null)
+            throw new Exception("User not found");
+
+        await _repository.RemoveAsync(id);
+    }
 }

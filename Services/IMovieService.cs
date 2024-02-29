@@ -8,5 +8,5 @@ public interface IMovieService
     Task<MovieDto?> GetMovieByIdAsync(int id);
     Task<IEnumerable<MovieDto>> GetAllMoviesAsync(int skip, int take);
     Task UpdateMovieAsync(MovieDto obj, int id);
-
+    Task DeleteMovieAsync(int id);
 }

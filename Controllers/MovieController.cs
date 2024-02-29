@@ -1,4 +1,3 @@
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using movies_api.DTOs;
 using movies_api.Services;
@@ -23,7 +22,7 @@ public class MovieController : ControllerBase
     {
         await _movieService.AddMovieAsync(obj);
 
-        return Created("/movie", obj);
+        return StatusCode(201, obj); 
     }
 
     [HttpGet]
@@ -46,6 +45,14 @@ public class MovieController : ControllerBase
     public async Task<IActionResult> UpdateMovie(int id, [FromBody] MovieDto obj) 
     {
         await _movieService.UpdateMovieAsync(obj, id);
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMovie(int id) 
+    {
+        await _movieService.DeleteMovieAsync(id);
 
         return NoContent();
     }

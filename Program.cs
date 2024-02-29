@@ -1,4 +1,5 @@
 using movies_api.Infrastructure.System.Extensions;
+using movies_api.Infrastructure.System.Middlewares;
 using movies_api.Infrastructure.System.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseHttpsRedirection();
 
