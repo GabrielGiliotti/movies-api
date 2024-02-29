@@ -1,4 +1,3 @@
-using movies_api.Infrastructure.Database;
 using movies_api.Models;
 
 namespace movies_api.Repositories;

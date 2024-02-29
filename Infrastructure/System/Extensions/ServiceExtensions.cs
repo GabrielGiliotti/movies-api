@@ -19,8 +19,11 @@ public static class ServiceExtensions
         // Repositories
         services.AddScoped<IRepository<Movie>, Repository<Movie>>();
         services.AddScoped<IMovieRepository, MovieRepository>();
+        services.AddScoped<IRepository<MovieTheater>, Repository<MovieTheater>>();
+        services.AddScoped<IMovieTheaterRepository, MovieTheaterRepository>();
 
         // Services
         services.AddScoped<IMovieService, MovieService>();
+        services.AddScoped<IMovieTheaterService, MovieTheaterService>();
     }
 }
