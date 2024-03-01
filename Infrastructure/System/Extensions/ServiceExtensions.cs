@@ -12,7 +12,7 @@ public static class ServiceExtensions
     {
         // Database
         services.AddDbContext<Context>(opts => 
-            opts.UseMySql(connection, ServerVersion.AutoDetect(connection)));
+            opts.UseLazyLoadingProxies().UseMySql(connection, ServerVersion.AutoDetect(connection)));
         
         services.AddScoped<IUnitOfwork, UnitOfwork>();
         

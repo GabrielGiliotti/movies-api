@@ -70,6 +70,19 @@ Note: The commands presented correspond to the .NET CLI, that is, they can be ap
 
 ### 1:1 Relationship
 
+Before performing the 1:1 mapping, if we want two entities to reflect each other's data in the response, we must configure the API to ignore cycles because, imagine the case of a 1:1 mapping of a cinema and an address, in which By placing the entities one inside the other, an infinite cycle will occur where a cinema references an address, which then references the cinema itself, which references the address...
+
+So, in the non-ideal case where we want to carry out this mapping, we perform the following configuration in the Startup.cs class:
+
+change
+
+```builder.Services.AddControllers();```
+
+for:
+
+```builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);```
+
+
 ### 1:n Relationship
 
 ### n:n Relationship

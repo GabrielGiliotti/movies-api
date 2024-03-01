@@ -9,4 +9,6 @@ public class AddressDto
     public string PublicPlace { get; set; } = null!;
 
     public int Number { get; set; }
+    
+    public MovieTheaterDto? MovieTheater { get; set; }
 }
