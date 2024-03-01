@@ -11,4 +11,7 @@ public class MovieTheater
     [Required]
     [MaxLength(90, ErrorMessage = "MovieTheater name length exceeded")]
     public string Name { get; set; } = null!;
+
+    public int? AddressId { get; set; }
+    public virtual Address? Address { get; set; }
 }
