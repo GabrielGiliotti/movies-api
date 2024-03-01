@@ -18,41 +18,41 @@ public class MovieTheaterService : IMovieTheaterService
 
     public async Task AddMovieTheaterAsync(MovieTheaterDto dto)
     {
-        var movie = _mapper.Map<MovieTheater>(dto);
+        var movieTheater = _mapper.Map<MovieTheater>(dto);
 
-        if(movie != null)
-            await _repository.AddAsync(movie);
+        if(movieTheater != null)
+            await _repository.AddAsync(movieTheater);
         else
             throw new Exception("Error when adding User");
     }
 
     public async Task<IEnumerable<MovieTheaterDto>> GetAllMovieTheatersAsync(int skip, int take)
     {
-        var movies = await _repository.GetAllAsync(skip, take);
+        var movieTheaters = await _repository.GetAllAsync(skip, take);
         
-        var list = _mapper.Map<IEnumerable<MovieTheaterDto>>(movies);
+        var list = _mapper.Map<IEnumerable<MovieTheaterDto>>(movieTheaters);
 
         if(list != null)
             return list;
         else 
-            throw new Exception("Error while mapping User List");
+            throw new Exception("Error while mapping MovieTheater List");
     }
 
     public async Task<MovieTheaterDto?> GetMovieTheaterByIdAsync(int id)
     {
-        var movie = await _repository.GetByIdAsync(id);
+        var movieTheater = await _repository.GetByIdAsync(id);
 
-        var dto = _mapper.Map<MovieTheaterDto>(movie);
+        var dto = _mapper.Map<MovieTheaterDto>(movieTheater);
 
         if(dto != null)
             return dto;
         else 
-            throw new Exception("Error while mapping UserDto");
+            throw new Exception("Error while mapping MovieTheaterDto");
     }
 
     public async Task UpdateMovieTheaterAsync(MovieTheaterDto obj, int id)
     {
-        var toUpdate = await _repository.GetByIdAsync(id) ?? throw new Exception("Movie not found");
+        var toUpdate = await _repository.GetByIdAsync(id) ?? throw new Exception("MovieTheater not found");
         
         if (!string.IsNullOrEmpty(obj.Name) && toUpdate.Name != obj.Name) 
         {
@@ -64,10 +64,10 @@ public class MovieTheaterService : IMovieTheaterService
 
     public async Task DeleteMovieTheaterAsync(int id) 
     {
-        var movie = await _repository.GetByIdAsync(id);
+        var movieTheater = await _repository.GetByIdAsync(id);
 
-        if(movie == null)
-            throw new Exception("User not found");
+        if(movieTheater == null)
+            throw new Exception("MovieTheater not found");
 
         await _repository.RemoveAsync(id);
     }

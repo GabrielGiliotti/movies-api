@@ -23,7 +23,7 @@ public class MovieService : IMovieService
         if(movie != null)
             await _repository.AddAsync(movie);
         else
-            throw new Exception("Error when adding User");
+            throw new Exception("Error when adding Movie");
     }
 
     public async Task<IEnumerable<MovieDto>> GetAllMoviesAsync(int skip, int take)
@@ -35,7 +35,7 @@ public class MovieService : IMovieService
         if(list != null)
             return list;
         else 
-            throw new Exception("Error while mapping User List");
+            throw new Exception("Error while mapping Movie List");
     }
 
     public async Task<MovieDto?> GetMovieByIdAsync(int id)
@@ -47,7 +47,7 @@ public class MovieService : IMovieService
         if(dto != null)
             return dto;
         else 
-            throw new Exception("Error while mapping UserDto");
+            throw new Exception("Error while mapping MovieDto");
     }
 
     public async Task UpdateMovieAsync(MovieDto obj, int id)

@@ -28,17 +28,17 @@ public class MovieTheaterController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetMovieTheatersPaged([FromQuery] int skip = 0, [FromQuery] int take = 100) 
     {
-        var movies = await _movieTheaterService.GetAllMovieTheatersAsync(skip, take);
+        var movieTheaters = await _movieTheaterService.GetAllMovieTheatersAsync(skip, take);
         
-        return Ok(movies);
+        return Ok(movieTheaters);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetMovieTheaterById(int id) 
     {
-        var movie = await _movieTheaterService.GetMovieTheaterByIdAsync(id);
+        var movieTheater = await _movieTheaterService.GetMovieTheaterByIdAsync(id);
         
-        return Ok(movie);
+        return Ok(movieTheater);
     }
 
     [HttpPatch("{id}")]
