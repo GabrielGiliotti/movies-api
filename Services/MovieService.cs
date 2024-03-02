@@ -82,7 +82,7 @@ public class MovieService : IMovieService
         var movie = await _repository.GetByIdAsync(id);
 
         if(movie == null)
-            throw new Exception("User not found");
+            throw new Exception("Movie not found");
 
         await _repository.RemoveAsync(id);
     }

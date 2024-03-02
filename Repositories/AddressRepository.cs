@@ -19,9 +19,9 @@ public class AddressRepository : IAddressRepository
 
     public async Task<IEnumerable<Address>> GetAllAsync(int skip, int take)
     {
-        var movies = await _repo.GetAll();
+        var addresses = await _repo.GetAll();
 
-        return movies.Skip(skip).Take(take);
+        return addresses.Skip(skip).Take(take);
     }
 
     public async Task<Address?> GetByIdAsync(int id)

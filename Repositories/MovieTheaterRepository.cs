@@ -19,9 +19,9 @@ public class MovieTheaterRepository : IMovieTheaterRepository
 
     public async Task<IEnumerable<MovieTheater>> GetAllAsync(int skip, int take)
     {
-        var movies = await _repo.GetAll();
+        var movieTheaters = await _repo.GetAll();
 
-        return movies.Skip(skip).Take(take);
+        return movieTheaters.Skip(skip).Take(take);
     }
 
     public async Task<MovieTheater?> GetByIdAsync(int id)

@@ -82,6 +82,11 @@ for:
 
 ```builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);```
 
+After adding the additional configuration for cyclic references in 1:1 relationships, we must reference in one of the classes that we are relating, in addition to the model data, the Id of the entity to which we want to relate. In the case of this API, the 1:1 relationship is between the cinema entity and the address entity, so either we create the address ID in the cinema entity, or we place the cinema ID in the address entity.
+
+This must be done so that the EntityFramework understands the relationship and configures migrations correctly for the database.
+
+NOTE: The direction of the relationship: Whether the Address will contain a single cinema or whether A cinema will contain a single address depends on the restrictions established in the project planning - it is up to the developer to decide.
 
 ### 1:n Relationship
 
