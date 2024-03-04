@@ -9,7 +9,9 @@ public class MovieProfile : Profile
     public MovieProfile() 
     {
         CreateMap<MovieDto, Movie>();
-        CreateMap<Movie, MovieDto>();
+        CreateMap<Movie, MovieDto>()
+            .ForMember(dto => dto.SessionDto, opt => opt
+                .MapFrom(movieTheater => movieTheater.Session));
         CreateMap<IEnumerable<Movie>, IList<MovieDto>>();
     }
 }
