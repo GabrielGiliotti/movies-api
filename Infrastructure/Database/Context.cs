@@ -7,7 +7,22 @@ public class Context : DbContext
 {
     public Context(DbContextOptions<Context> opts) : base(opts) {}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {}
-    protected override void OnModelCreating(ModelBuilder modelBuilder) {}
+    protected override void OnModelCreating(ModelBuilder modelBuilder) 
+    {
+        modelBuilder.Entity<Session>()
+            .HasKey(session => new { session.MovieId, session.MovieTheaterId });
+        
+        modelBuilder.Entity<Session>()
+            .HasOne(session => session.MovieTheater)
+            .WithMany(movieTheater => movieTheater.Sessions)
+            .HasForeignKey(session => session.MovieTheaterId);
+
+        modelBuilder.Entity<Session>()
+            .HasOne(session => session.Movie)
+            .WithMany(movie => movie.Sessions)
+            .HasForeignKey(session => session.MovieId);
+    }
+
     public DbSet<Movie> Movies { get; set; }
     public DbSet<MovieTheater> MovieTheaters { get; set; }
     public DbSet<Address> Addresses { get; set; }

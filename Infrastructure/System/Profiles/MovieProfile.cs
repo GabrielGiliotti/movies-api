@@ -11,7 +11,7 @@ public class MovieProfile : Profile
         CreateMap<MovieDto, Movie>();
         CreateMap<Movie, MovieDto>()
             .ForMember(dto => dto.SessionDto, opt => opt
-                .MapFrom(movieTheater => movieTheater.Session));
+                .MapFrom(movieTheater => movieTheater.Sessions));
         CreateMap<IEnumerable<Movie>, IList<MovieDto>>();
     }
 }
