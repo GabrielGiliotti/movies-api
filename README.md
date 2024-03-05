@@ -90,4 +90,31 @@ NOTE: The direction of the relationship: Whether the Address will contain a sing
 
 ### 1:n Relationship
 
+For 1:n relationships, we must configure the relationship in the DbContext's OnModelCreating() method, defining for a given Entity, the 1:n relationship of a property and the ForeignKey.
+
+See the example of the method below:
+
+``` 
+protected override void OnModelCreating(ModelBuilder modelBuilder) 
+{   
+    modelBuilder.Entity<Session>()
+        .HasOne(session => session.MovieTheater)
+        .WithMany(movieTheater => movieTheater.Sessions)
+        .HasForeignKey(session => session.MovieTheaterId);
+} 
+```
+
 ### n:n Relationship
+
+In n:n relationships, we must create an intermediate entity (table) that will make an n:1 1:n mapping with the entities that have an n:n relationship. Therefore, we must make 1:n configurations similar to those shown in the previous section, but 2 mappings will be necessary, such as:
+
+```
+1 MovieTheater has n Sessions  <-->  1 Session happen only in One MovieTheater
+1 Movie can belong to n Sessions <--> 1 Session stream only One Movie
+
+This implies that
+
+n MovieTheaters has n Movies <--> n Movies are streamed in n MovieTheaters (Through sessions)
+```
+
+Note: The configuration is performed similarly to the 1:n relationship in the OnModelCreating() method.
