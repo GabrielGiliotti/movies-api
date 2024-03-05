@@ -26,9 +26,9 @@ public class MovieTheaterService : IMovieTheaterService
             throw new Exception("Error when adding User");
     }
 
-    public async Task<IEnumerable<MovieTheaterDto>> GetAllMovieTheatersAsync(int skip, int take)
+    public async Task<IEnumerable<MovieTheaterDto>> GetAllMovieTheatersAsync(int skip, int take, int? addressId)
     {
-        var movieTheaters = await _repository.GetAllAsync(skip, take);
+        var movieTheaters = await _repository.GetAllAsync(skip, take, addressId);
         
         var list = _mapper.Map<IEnumerable<MovieTheaterDto>>(movieTheaters);
 

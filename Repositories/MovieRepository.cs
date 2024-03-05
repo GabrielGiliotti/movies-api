@@ -17,11 +17,14 @@ public class MovieRepository : IMovieRepository
         await _repo.Create(obj);
     }
 
-    public async Task<IEnumerable<Movie>> GetAllAsync(int skip, int take)
+    public async Task<IEnumerable<Movie>> GetAllAsync(int skip, int take, string? theaterName)
     {
         var movies = await _repo.GetAll();
 
-        return movies.Skip(skip).Take(take);
+        if(theaterName == null)
+            return movies.Skip(skip).Take(take);
+
+        return movies.Where(m => m.Sessions != null && m.Sessions.Any(s => s.MovieTheater != null && s.MovieTheater.Name == theaterName));
     }
 
     public async Task<Movie?> GetByIdAsync(int id)

@@ -26,9 +26,9 @@ public class MovieTheaterController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetMovieTheatersPaged([FromQuery] int skip = 0, [FromQuery] int take = 100) 
+    public async Task<IActionResult> GetMovieTheatersPaged([FromQuery] int skip = 0, [FromQuery] int take = 100, [FromQuery] int? addressId = null) 
     {
-        var movieTheaters = await _movieTheaterService.GetAllMovieTheatersAsync(skip, take);
+        var movieTheaters = await _movieTheaterService.GetAllMovieTheatersAsync(skip, take, addressId);
         
         return Ok(movieTheaters);
     }

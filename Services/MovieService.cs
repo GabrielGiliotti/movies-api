@@ -26,9 +26,9 @@ public class MovieService : IMovieService
             throw new Exception("Error when adding Movie");
     }
 
-    public async Task<IEnumerable<MovieDto>> GetAllMoviesAsync(int skip, int take)
+    public async Task<IEnumerable<MovieDto>> GetAllMoviesAsync(int skip, int take, string? theaterName)
     {
-        var movies = await _repository.GetAllAsync(skip, take);
+        var movies = await _repository.GetAllAsync(skip, take, theaterName);
         
         var list = _mapper.Map<IEnumerable<MovieDto>>(movies);
 

@@ -8,10 +8,7 @@ public class Context : DbContext
     public Context(DbContextOptions<Context> opts) : base(opts) {}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {}
     protected override void OnModelCreating(ModelBuilder modelBuilder) 
-    {
-        modelBuilder.Entity<Session>()
-            .HasKey(session => new { session.MovieId, session.MovieTheaterId });
-        
+    {   
         modelBuilder.Entity<Session>()
             .HasOne(session => session.MovieTheater)
             .WithMany(movieTheater => movieTheater.Sessions)
